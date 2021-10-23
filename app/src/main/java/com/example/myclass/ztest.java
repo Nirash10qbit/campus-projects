@@ -1,0 +1,42 @@
+package com.example.myclass;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+
+public class ztest extends AppCompatActivity {
+
+    String st, st0, st1, st2, st3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ztest);
+
+        st = getIntent().getExtras().getString("value");
+        st1 = getIntent().getExtras().getString("gid");
+        st2 = getIntent().getExtras().getString("SIDNAME");
+        st3 = getIntent().getExtras().getString("SID");
+        st0 = getIntent().getExtras().getString("SIDPDF");
+
+
+    Handler handler = new Handler ();
+        handler.postDelayed (new Runnable ( ) {
+        @Override
+        public void run() {
+            Intent intent = new Intent (ztest.this,ztestb.class);
+            intent.putExtra("value", st);
+            intent.putExtra("gid", st1);
+            intent.putExtra("SIDNAME", st2);
+            intent.putExtra("SID", st3);
+            intent.putExtra("SIDPDF", st0);
+            startActivity (intent);
+        }
+    },3000);
+}
+}
